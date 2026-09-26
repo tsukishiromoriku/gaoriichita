@@ -45,7 +45,7 @@ function buildSvg() {
       }
 
       .font-display {
-        font-family: Georgia, 'Times New Roman', serif;
+        font-family: 'Playfair Display', 'Didot', 'Bodoni MT', 'Cinzel', Georgia, 'Times New Roman', serif;
       }
       .font-sans {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -57,9 +57,7 @@ function buildSvg() {
         animation: float 5s ease-in-out infinite;
         transform-origin: center;
       }
-      .shimmer-line {
-        animation: shimmer 3s ease-in-out infinite;
-      }
+
       .breathe {
         animation: breathe 4s ease-in-out infinite;
         transform-origin: center;
@@ -67,40 +65,37 @@ function buildSvg() {
       .border-glow {
         animation: borderGlow 4s ease-in-out infinite;
       }
-      .star-pulse {
-        animation: pulse 3s ease-in-out infinite;
-      }
-      .star-pulse-delay {
-        animation: pulse 3s ease-in-out infinite 1.5s;
-      }
     </style>
 
     <!-- Gradients -->
     <linearGradient id="bg-fade" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
-      <stop offset="25%" stop-color="#000000" stop-opacity="0.25"/>
-      <stop offset="50%" stop-color="#000000" stop-opacity="0.65"/>
-      <stop offset="70%" stop-color="#000000" stop-opacity="0.9"/>
-      <stop offset="85%" stop-color="#000000" stop-opacity="0.99"/>
+      <stop offset="25%" stop-color="#000000" stop-opacity="0.15"/>
+      <stop offset="55%" stop-color="#000000" stop-opacity="0.5"/>
+      <stop offset="85%" stop-color="#000000" stop-opacity="0.9"/>
       <stop offset="100%" stop-color="#000000" stop-opacity="1"/>
     </linearGradient>
 
-    <radialGradient id="hero-vignette" cx="20%" cy="30%" r="55%">
-      <stop offset="0%" stop-color="#000000" stop-opacity="0.55"/>
-      <stop offset="65%" stop-color="#000000" stop-opacity="0.2"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
-    </radialGradient>
-
-    <linearGradient id="glass-card" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.07"/>
-      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.04"/>
+    <!-- Plain Frosted Glass Card Fill -->
+    <linearGradient id="glass-card-surface" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.13"/>
+      <stop offset="45%" stop-color="#ffffff" stop-opacity="0.05"/>
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02"/>
     </linearGradient>
 
-    <linearGradient id="glass-card-hover" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.12"/>
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.04"/>
+    <!-- Plain Frosted Specular Sheen (Top Rim Light) -->
+    <linearGradient id="glass-card-top-light" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.24"/>
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
+
+    <!-- Plain Frosted Diffuse Aura (Monochrome White Blur for Cards) -->
+    <radialGradient id="plain-frosted-aura" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0.03"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
 
     <linearGradient id="accent-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#7c6aef"/>
@@ -119,20 +114,6 @@ function buildSvg() {
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/>
     </linearGradient>
 
-    <radialGradient id="ambient-glow-1" cx="15%" cy="20%" r="40%">
-      <stop offset="0%" stop-color="#5865F2" stop-opacity="0.08">
-        <animate attributeName="stop-opacity" values="0.08;0.14;0.08" dur="6s" repeatCount="indefinite"/>
-      </stop>
-      <stop offset="100%" stop-color="#5865F2" stop-opacity="0"/>
-    </radialGradient>
-
-    <radialGradient id="ambient-glow-2" cx="85%" cy="70%" r="35%">
-      <stop offset="0%" stop-color="#7c6aef" stop-opacity="0.05">
-        <animate attributeName="stop-opacity" values="0.05;0.10;0.05" dur="8s" repeatCount="indefinite"/>
-      </stop>
-      <stop offset="100%" stop-color="#7c6aef" stop-opacity="0"/>
-    </radialGradient>
-
     <!-- Clips -->
     <clipPath id="outer-clip">
       <rect x="0" y="0" width="880" height="960" rx="32"/>
@@ -146,39 +127,28 @@ function buildSvg() {
     <filter id="text-glow" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="#000000" flood-opacity="0.9"/>
     </filter>
+    <!-- Plain Frosted Diffusion Blur for Big Cards -->
+    <filter id="card-blur-glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
   </defs>
 
   <g clip-path="url(#outer-clip)">
-    <!-- ============== BASE BACKGROUND (PURE BLACK) ============== -->
+    <!-- ============== BASE BACKGROUND (PURE SOLID JET BLACK) ============== -->
     <rect width="880" height="960" fill="#000000"/>
 
-    <!-- Mountain Landscape Background -->
+    <!-- Mountain Landscape Background (Top Half Only) -->
     <image href="data:image/jpeg;base64,${mountainBase64}" xlink:href="data:image/jpeg;base64,${mountainBase64}" x="0" y="0" width="880" height="520" preserveAspectRatio="xMidYMin slice" opacity="0.95"/>
 
-    <!-- Smooth Seamless Fade Over Mountain into Pure Black (No divider/boundary) -->
-    <rect x="0" y="60" width="880" height="900" fill="url(#bg-fade)"/>
-
-    <!-- Hero Text Readability Vignette -->
-    <rect x="0" y="60" width="620" height="260" fill="url(#hero-vignette)"/>
-
-    <!-- Ambient Glow Effects -->
-    <rect width="880" height="960" fill="url(#ambient-glow-1)"/>
-    <rect width="880" height="960" fill="url(#ambient-glow-2)"/>
-
-    <!-- Decorative Stars -->
-    <circle cx="120" cy="60" r="1.5" fill="#ffffff" opacity="0.7" class="star-pulse"/>
-    <circle cx="300" cy="35" r="1" fill="#ffffff" opacity="0.5" class="star-pulse-delay"/>
-    <circle cx="550" cy="50" r="1.8" fill="#ffffff" opacity="0.6" class="star-pulse"/>
-    <circle cx="750" cy="80" r="1.2" fill="#ffffff" opacity="0.4" class="star-pulse-delay"/>
-    <circle cx="200" cy="100" r="0.8" fill="#ffffff" opacity="0.3" class="star-pulse"/>
-    <circle cx="680" cy="40" r="1" fill="#ffffff" opacity="0.5" class="star-pulse"/>
+    <!-- Smooth Seamless Fade Over Mountain into Solid Black -->
+    <rect x="0" y="0" width="880" height="520" fill="url(#bg-fade)"/>
 
     <!-- ============================================ -->
     <!-- NAVBAR -->
     <!-- ============================================ -->
     <g id="navbar" transform="translate(44, 54)">
       <!-- Nav Items Right Side -->
-      <g transform="translate(530, -14)">
+      <g transform="translate(635, -14)">
         <!-- About pill -->
         <rect x="0" y="0" width="70" height="30" rx="15" fill="url(#nav-pill-bg)" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
         <text x="35" y="19" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.9)" text-anchor="middle">About</text>
@@ -186,11 +156,6 @@ function buildSvg() {
         <!-- Skills pill -->
         <rect x="80" y="0" width="70" height="30" rx="15" fill="url(#nav-pill-bg)" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
         <text x="115" y="19" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.9)" text-anchor="middle">Skills</text>
-
-        <!-- Discord pill (active) -->
-        <rect x="160" y="0" width="92" height="30" rx="15" fill="rgba(88,101,242,0.2)" stroke="rgba(88,101,242,0.5)" stroke-width="0.8"/>
-        <circle cx="178" cy="15" r="4" fill="#5865F2"/>
-        <text x="210" y="19" class="font-sans" font-size="11" font-weight="600" fill="#c4cbff" text-anchor="middle">Discord</text>
       </g>
     </g>
 
@@ -199,11 +164,11 @@ function buildSvg() {
     <!-- ============================================ -->
     <g id="hero" transform="translate(50, 135)" filter="url(#text-glow)">
       <!-- Main Title -->
-      <text x="0" y="44" class="font-sans" font-size="52" font-weight="800" fill="url(#title-gradient)" letter-spacing="-1.5px">
+      <text x="0" y="46" class="font-display" font-size="54" font-weight="500" fill="url(#title-gradient)" letter-spacing="-0.5px">
         Building Digital
       </text>
-      <text x="0" y="100" class="font-sans" font-size="52" font-weight="800" fill="url(#title-gradient)" letter-spacing="-1.5px">
-        Dreams <tspan class="font-display" font-weight="400" font-style="italic" fill="rgba(255,255,255,0.9)" font-size="46">with code.</tspan>
+      <text x="0" y="104" class="font-display" font-size="54" font-weight="500" fill="url(#title-gradient)" letter-spacing="-0.5px">
+        Dreams <tspan font-weight="400" font-style="italic" fill="rgba(255,255,255,0.9)" font-size="48">with code.</tspan>
       </text>
 
       <!-- Subtitle -->
@@ -214,24 +179,20 @@ function buildSvg() {
         responsive interfaces, and reliable backend services.
       </text>
 
-      <!-- Accent Line -->
-      <rect x="0" y="184" width="60" height="3" rx="1.5" fill="url(#accent-gradient)" class="shimmer-line"/>
+
     </g>
 
     <!-- ============================================ -->
-    <!-- ABOUT ME CARD (Frosted Glass)                -->
+    <!-- ABOUT ME CARD (Clear / Bening)               -->
     <!-- ============================================ -->
-    <g id="about" transform="translate(44, 350)">
-      <!-- Card Background -->
-      <rect width="792" height="255" rx="28" fill="url(#glass-card)" stroke="rgba(255,255,255,0.12)" stroke-width="1" filter="url(#soft-shadow)" class="border-glow"/>
-
-      <!-- Inner Glass Highlight Line (top) -->
-      <line x1="28" y1="1" x2="200" y2="1" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-linecap="round"/>
+    <g id="about" transform="translate(44, 335)">
+      <!-- Card Background (Clear / Bening) -->
+      <rect width="792" height="255" rx="28" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1" filter="url(#soft-shadow)"/>
 
       <!-- Left Side: About Info -->
       <g transform="translate(38, 30)">
         <!-- Name -->
-        <text x="0" y="24" class="font-sans" font-size="28" font-weight="800" fill="#ffffff" letter-spacing="-0.5px">Gaori Ichita</text>
+        <text x="0" y="25" class="font-display" font-size="30" font-weight="600" fill="#ffffff" letter-spacing="0.2px">Gaori Ichita</text>
 
         <!-- Bio Text -->
         <text x="0" y="58" class="font-sans" font-size="13.5" fill="rgba(255,255,255,0.8)" letter-spacing="0.2px">
@@ -282,15 +243,16 @@ function buildSvg() {
     <!-- ============================================ -->
     <!-- SKILLS SECTION (Premium Glass Chip Cards)    -->
     <!-- ============================================ -->
-    <g id="skills" transform="translate(44, 635)">
+    <g id="skills" transform="translate(44, 655)">
       <!-- Section Header -->
-      <text x="0" y="0" class="font-sans" font-size="22" font-weight="700" fill="#ffffff" letter-spacing="-0.3px">Technical Skills</text>
+      <text x="0" y="0" class="font-display" font-size="24" font-weight="600" fill="#ffffff" letter-spacing="0.3px">Technical Skills</text>
 
       <!-- Skills Grid (Sleek Cards with Individual Tag Pills) -->
-      <g transform="translate(0, 20)">
+      <g transform="translate(0, 22)">
         <!-- ===== Card 1: Frontend ===== -->
         <g transform="translate(0, 0)">
-          <rect width="252" height="216" rx="20" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
+          <!-- Card Background (Clear / Bening) -->
+          <rect width="252" height="216" rx="20" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1" filter="url(#soft-shadow)"/>
 
           <!-- Header: Icon Badge + Titles -->
           <rect x="18" y="16" width="36" height="36" rx="10" fill="rgba(88,101,242,0.15)" stroke="rgba(88,101,242,0.35)" stroke-width="0.8"/>
@@ -300,11 +262,8 @@ function buildSvg() {
           <line x1="36" y1="38" x2="36" y2="42" stroke="#5865F2" stroke-width="1.5"/>
           <line x1="30" y1="42" x2="42" y2="42" stroke="#5865F2" stroke-width="1.5" stroke-linecap="round"/>
 
-          <text x="64" y="32" class="font-sans" font-size="16" font-weight="700" fill="#ffffff">Front-end</text>
+          <text x="64" y="32" class="font-display" font-size="18" font-weight="600" fill="#ffffff" letter-spacing="0.3px">Front-end</text>
           <text x="64" y="47" class="font-sans" font-size="9.5" font-weight="600" fill="#7c6aef" letter-spacing="0.8px">MODERN UI / UX</text>
-
-          <!-- Divider -->
-          <line x1="18" y1="64" x2="234" y2="64" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
 
           <!-- Skill Pills (Clean Grid) -->
           ${pill(18, 76, 56, 'React')}
@@ -324,7 +283,8 @@ function buildSvg() {
 
         <!-- ===== Card 2: Backend ===== -->
         <g transform="translate(270, 0)">
-          <rect width="252" height="216" rx="20" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
+          <!-- Card Background (Clear / Bening) -->
+          <rect width="252" height="216" rx="20" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1" filter="url(#soft-shadow)"/>
 
           <!-- Header: Icon Badge + Titles -->
           <rect x="18" y="16" width="36" height="36" rx="10" fill="rgba(124,106,239,0.15)" stroke="rgba(124,106,239,0.35)" stroke-width="0.8"/>
@@ -334,11 +294,8 @@ function buildSvg() {
           <path d="M27 29 v5 c0 1.6 4 3 9 3 s9 -1.4 9 -3 v-5" fill="none" stroke="#7c6aef" stroke-width="1.5"/>
           <path d="M27 34 v5 c0 1.6 4 3 9 3 s9 -1.4 9 -3 v-5" fill="none" stroke="#7c6aef" stroke-width="1.5"/>
 
-          <text x="64" y="32" class="font-sans" font-size="16" font-weight="700" fill="#ffffff">Back-end</text>
+          <text x="64" y="32" class="font-display" font-size="18" font-weight="600" fill="#ffffff" letter-spacing="0.3px">Back-end</text>
           <text x="64" y="47" class="font-sans" font-size="9.5" font-weight="600" fill="#a8b4ff" letter-spacing="0.8px">API &amp; ARCHITECTURE</text>
-
-          <!-- Divider -->
-          <line x1="18" y1="64" x2="234" y2="64" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
 
           <!-- Skill Pills (Clean Grid) -->
           ${pill(18, 76, 66, 'Node.js')}
@@ -360,7 +317,8 @@ function buildSvg() {
 
         <!-- ===== Card 3: DevOps ===== -->
         <g transform="translate(540, 0)">
-          <rect width="252" height="216" rx="20" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
+          <!-- Card Background (Clear / Bening) -->
+          <rect width="252" height="216" rx="20" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1" filter="url(#soft-shadow)"/>
 
           <!-- Header: Icon Badge + Titles -->
           <rect x="18" y="16" width="36" height="36" rx="10" fill="rgba(74,168,216,0.15)" stroke="rgba(74,168,216,0.35)" stroke-width="0.8"/>
@@ -368,11 +326,8 @@ function buildSvg() {
           <path d="M29 38 c-2.5 0 -4 -1.6 -4 -3.8 c0 -1.8 1.2 -3.2 2.8 -3.6 c0.3 -2.8 2.6 -4.8 5.6 -4.8 c2.8 0 5 1.8 5.5 4.5 c1.8 0.3 3.1 1.8 3.1 3.7 c0 2.2 -1.8 4 -4 4 Z" fill="none" stroke="#4aa8d8" stroke-width="1.5" stroke-linejoin="round"/>
           <path d="M33 33 L36 36 L41 31" fill="none" stroke="#4aa8d8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 
-          <text x="64" y="32" class="font-sans" font-size="16" font-weight="700" fill="#ffffff">DevOps</text>
+          <text x="64" y="32" class="font-display" font-size="18" font-weight="600" fill="#ffffff" letter-spacing="0.3px">DevOps</text>
           <text x="64" y="47" class="font-sans" font-size="9.5" font-weight="600" fill="#7dd3fc" letter-spacing="0.8px">DEPLOY &amp; CLOUD</text>
-
-          <!-- Divider -->
-          <line x1="18" y1="64" x2="234" y2="64" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
 
           <!-- Skill Pills (Clean Grid) -->
           ${pill(18, 76, 62, 'Docker')}
@@ -395,18 +350,11 @@ function buildSvg() {
     <!-- ============================================ -->
     <!-- FOOTER -->
     <!-- ============================================ -->
-    <g transform="translate(440, 910)">
-      <!-- Decorative Line -->
-      <line x1="-350" y1="0" x2="350" y2="0" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-
+    <g transform="translate(440, 915)">
       <!-- Footer Text -->
-      <text x="0" y="28" class="font-sans" font-size="11" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="0.5px">
+      <text x="0" y="24" class="font-sans" font-size="11" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="0.5px">
         Designed with Glassmorphism &#8226; Gaori Ichita &#169; 2026
       </text>
-
-      <!-- Small decorative dots -->
-      <circle cx="-22" cy="28" r="1.5" fill="rgba(88,101,242,0.3)"/>
-      <circle cx="22" cy="28" r="1.5" fill="rgba(124,106,239,0.3)"/>
     </g>
 
     <!-- ============================================ -->
