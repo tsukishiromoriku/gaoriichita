@@ -1,16 +1,16 @@
 <div align="center">
 
 <!-- ========================================== -->
-<!-- MOUNTAIN GLASSMORPHISM PROFILE BANNER      -->
+<!-- PREMIUM GLASSMORPHISM PROFILE BANNER       -->
 <!-- ========================================== -->
 <a href="https://github.com/gaoriichita">
-  <img src="https://raw.githubusercontent.com/gaoriichita/gaoriichita/main/github-profile.svg" alt="Gaori Ichita - Full-stack Developer Profile" width="100%" />
+  <img src="https://raw.githubusercontent.com/gaoriichita/gaoriichita/main/github-profile.svg" alt="Gaori Ichita - Full-stack Developer" width="100%" />
 </a>
 
 <br/><br/>
 
 <!-- ========================================== -->
-<!-- MEDIA SOCIAL (DISCORD ONLY)                -->
+<!-- SOCIAL: DISCORD ONLY                       -->
 <!-- ========================================== -->
 <p align="center">
   <a href="https://discord.com" target="_blank">
