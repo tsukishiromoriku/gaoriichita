@@ -10,7 +10,6 @@ if (!fs.existsSync(assetsDir)) {
 const profileBase64 = fs.readFileSync(path.join(assetsDir, 'profile_thumb.jpg')).toString('base64');
 const sphereBase64 = fs.readFileSync(path.join(assetsDir, 'sphere_thumb.jpg')).toString('base64');
 
-// Load config from profile-config.json if exists, else fallback
 let config = {};
 try {
   config = JSON.parse(fs.readFileSync(path.join(__dirname, 'profile-config.json'), 'utf8'));
@@ -29,6 +28,26 @@ function escapeXml(unsafe) {
 const sharedStyles = `
   * { box-sizing: border-box; }
 
+  @keyframes floatAnim {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { stroke-opacity: 0.35; }
+    50% { stroke-opacity: 0.85; stroke: #4f526b; }
+  }
+
+  @keyframes cursorAnim {
+    0%, 100% { transform: translate(380px, 24px); }
+    50% { transform: translate(384px, 28px); }
+  }
+
+  @keyframes ringPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+  }
+
   .font-title {
     font-family: 'Space Mono', 'Courier Prime', 'Courier New', monospace;
     font-weight: 700;
@@ -38,6 +57,23 @@ const sharedStyles = `
   }
   .font-sans {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .floating-sphere {
+    animation: floatAnim 4.5s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  .pulse-card {
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  .animated-cursor {
+    animation: cursorAnim 1.6s ease-in-out infinite;
+  }
+
+  .pulse-ring {
+    animation: ringPulse 5s ease-in-out infinite;
   }
 
   .nav-item {
@@ -55,7 +91,6 @@ const sharedStyles = `
   }
 `;
 
-// 1. MASTER FULL SVG
 function buildFullSvg(data) {
   return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 840 1780" width="840" height="1780" fill="none">
   <defs>
@@ -86,10 +121,10 @@ function buildFullSvg(data) {
   <g clip-path="url(#frame-clip)">
     <rect x="10" y="10" width="820" height="1760" rx="36" fill="#0e0e11" stroke="#22222a" stroke-width="1.5" />
 
-    <!-- Ambient Geometric Circles -->
-    <circle cx="730" cy="180" r="130" fill="none" stroke="#22222c" stroke-width="1" opacity="0.6" />
+    <!-- Ambient Geometric Circles with gentle pulse -->
+    <circle cx="730" cy="180" r="130" class="pulse-ring" fill="none" stroke="#22222c" stroke-width="1" />
     <circle cx="730" cy="180" r="210" fill="none" stroke="#1a1a22" stroke-width="1" opacity="0.4" />
-    <circle cx="700" cy="940" r="280" fill="none" stroke="#22222c" stroke-width="1" opacity="0.5" />
+    <circle cx="700" cy="940" r="280" class="pulse-ring" fill="none" stroke="#22222c" stroke-width="1" />
     <circle cx="700" cy="940" r="420" fill="none" stroke="#1a1a22" stroke-width="1" opacity="0.35" />
 
     <!-- NAVBAR -->
@@ -181,11 +216,13 @@ function buildFullSvg(data) {
         <path d="M21 13 L15 18 L21 23" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
       </g>
 
-      <!-- Center Active Card -->
+      <!-- Center Active Card with Glowing Pulse & Floating Torus -->
       <g transform="translate(275, 5)">
-        <rect x="0" y="0" width="375" height="175" rx="26" fill="url(#card-grad)" stroke="#383848" stroke-width="1.5" />
+        <rect class="pulse-card" x="0" y="0" width="375" height="175" rx="26" fill="url(#card-grad)" stroke="#383848" stroke-width="1.5" />
         <g clip-path="url(#sphere-clip)">
-          <image href="data:image/jpeg;base64,${sphereBase64}" xlink:href="data:image/jpeg;base64,${sphereBase64}" x="278" y="435" width="145" height="165" preserveAspectRatio="xMidYMid slice" />
+          <g class="floating-sphere">
+            <image href="data:image/jpeg;base64,${sphereBase64}" xlink:href="data:image/jpeg;base64,${sphereBase64}" x="278" y="435" width="145" height="165" preserveAspectRatio="xMidYMid slice" />
+          </g>
         </g>
         <g transform="translate(142, 28)">
           <text x="0" y="0" class="font-sans" font-size="13.5" font-weight="700" fill="#ffffff" letter-spacing="-0.1px">${escapeXml(data.featuredTitle1)}</text>
@@ -305,7 +342,8 @@ function buildFullSvg(data) {
               <text x="420" y="35" class="font-sans" font-size="12" font-weight="500" fill="#0f0f12">
                 ${escapeXml(work.role)} <tspan fill="#888890">|</tspan> <tspan font-weight="600">${escapeXml(work.tech)}</tspan>
               </text>
-              <g transform="translate(380, 24)">
+              <!-- Animated Pointer cursor indicator -->
+              <g class="animated-cursor">
                 <path d="M0 0 L4 12 L7 8 L12 8 Z" fill="#0f0f12" />
               </g>
               <line x1="0" y1="58" x2="720" y2="58" stroke="#ffffff" stroke-width="1" />
@@ -335,7 +373,7 @@ function buildFullSvg(data) {
 </svg>`;
 }
 
-// Write files
+// Write file
 const master = buildFullSvg(config);
 fs.writeFileSync(path.join(__dirname, 'github-profile.svg'), master);
-console.log('✓ Validated XML: github-profile.svg created:', (master.length / 1024).toFixed(2), 'KB');
+console.log('✓ Animated SVG created: github-profile.svg');
