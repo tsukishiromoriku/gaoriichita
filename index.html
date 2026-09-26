@@ -481,7 +481,7 @@
       background: var(--green-accent);
     }
 
-    /* Cat Photo Frame */
+    /* Cat Photo Frame (Static, clean) */
     .cat-frame {
       width: 220px;
       height: 240px;
@@ -489,13 +489,8 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
       overflow: hidden;
       box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
-      animation: float 5s ease-in-out infinite;
       position: relative;
       background: rgba(255,255,255,0.03);
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
     }
     .cat-frame img {
       width: 100%;
@@ -505,20 +500,6 @@
     }
     .cat-frame:hover img {
       transform: scale(1.08);
-    }
-    .cat-label {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 8px;
-      color: var(--text-subtle);
-      letter-spacing: 2px;
-      background: rgba(0,0,0,0.5);
-      padding: 3px 10px;
-      border-radius: 6px;
-      backdrop-filter: blur(6px);
     }
 
     /* ========== SKILLS SECTION ========== */
@@ -538,15 +519,6 @@
     .skills-title-group h3 span {
       font-weight: 300;
       color: var(--text-muted);
-    }
-    .decorative-dots {
-      display: flex;
-      gap: 8px;
-    }
-    .decorative-dots span {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
     }
     .skills-grid {
       display: grid;
@@ -790,7 +762,6 @@
           </div>
           <div class="cat-frame">
             <img src="assets/cat_thumb.jpg" alt="Cute Cat Thumbs Up" loading="lazy">
-            <span class="cat-label">MEOW.JPG</span>
           </div>
         </section>
 
@@ -799,11 +770,6 @@
           <div class="skills-header">
             <div class="skills-title-group">
               <h3>Technical Skills</h3>
-            </div>
-            <div class="decorative-dots">
-              <span style="background: rgba(88,101,242,0.5);"></span>
-              <span style="background: rgba(124,106,239,0.4);"></span>
-              <span style="background: rgba(74,168,216,0.3);"></span>
             </div>
           </div>
 

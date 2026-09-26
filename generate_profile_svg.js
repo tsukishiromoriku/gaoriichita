@@ -131,7 +131,7 @@ function buildSvg() {
       <rect x="0" y="0" width="880" height="960" rx="32"/>
     </clipPath>
     <clipPath id="cat-clip">
-      <rect x="565" y="370" width="190" height="205" rx="22"/>
+      <rect x="565" y="25" width="190" height="205" rx="20"/>
     </clipPath>
     <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000000" flood-opacity="0.4"/>
@@ -267,8 +267,8 @@ function buildSvg() {
         </g>
       </g>
 
-      <!-- Right Side: Cat Photo -->
-      <g class="cat-float">
+      <!-- Right Side: Cat Photo (Static, no MEOW label) -->
+      <g>
         <!-- Photo Frame Glass Border -->
         <rect x="560" y="20" width="200" height="215" rx="22" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
 
@@ -276,9 +276,6 @@ function buildSvg() {
         <g clip-path="url(#cat-clip)">
           <image href="data:image/jpeg;base64,${catBase64}" xlink:href="data:image/jpeg;base64,${catBase64}" x="565" y="25" width="190" height="205" preserveAspectRatio="xMidYMid slice"/>
         </g>
-
-        <!-- Photo Label -->
-        <text x="660" y="248" class="font-mono" font-size="9" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="1px">MEOW.JPG</text>
       </g>
     </g>
 
@@ -288,13 +285,6 @@ function buildSvg() {
     <g id="skills" transform="translate(44, 635)">
       <!-- Section Header -->
       <text x="0" y="0" class="font-sans" font-size="22" font-weight="700" fill="#ffffff" letter-spacing="-0.3px">Technical Skills</text>
-
-      <!-- Decorative dots -->
-      <g transform="translate(700, -8)">
-        <circle cx="0" cy="0" r="3" fill="rgba(88,101,242,0.4)"/>
-        <circle cx="14" cy="0" r="3" fill="rgba(124,106,239,0.3)"/>
-        <circle cx="28" cy="0" r="3" fill="rgba(74,168,216,0.2)"/>
-      </g>
 
       <!-- Skills Grid (Sleek Cards with Individual Tag Pills) -->
       <g transform="translate(0, 20)">
