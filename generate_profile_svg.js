@@ -305,8 +305,6 @@ function buildSvg() {
         <!-- ===== Card 1: Frontend ===== -->
         <g transform="translate(0, 0)">
           <rect width="252" height="216" rx="20" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
-          <!-- Top accent line -->
-          <rect x="18" y="0" width="56" height="2.5" rx="1.25" fill="#5865F2" opacity="0.8"/>
 
           <!-- Header: Icon Badge + Titles -->
           <rect x="18" y="16" width="36" height="36" rx="10" fill="rgba(88,101,242,0.15)" stroke="rgba(88,101,242,0.35)" stroke-width="0.8"/>
@@ -341,8 +339,6 @@ function buildSvg() {
         <!-- ===== Card 2: Backend ===== -->
         <g transform="translate(270, 0)">
           <rect width="252" height="216" rx="20" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
-          <!-- Top accent line -->
-          <rect x="18" y="0" width="56" height="2.5" rx="1.25" fill="#7c6aef" opacity="0.8"/>
 
           <!-- Header: Icon Badge + Titles -->
           <rect x="18" y="16" width="36" height="36" rx="10" fill="rgba(124,106,239,0.15)" stroke="rgba(124,106,239,0.35)" stroke-width="0.8"/>
@@ -379,8 +375,6 @@ function buildSvg() {
         <!-- ===== Card 3: DevOps ===== -->
         <g transform="translate(540, 0)">
           <rect width="252" height="216" rx="20" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
-          <!-- Top accent line -->
-          <rect x="18" y="0" width="56" height="2.5" rx="1.25" fill="#4aa8d8" opacity="0.8"/>
 
           <!-- Header: Icon Badge + Titles -->
           <rect x="18" y="16" width="36" height="36" rx="10" fill="rgba(74,168,216,0.15)" stroke="rgba(74,168,216,0.35)" stroke-width="0.8"/>
