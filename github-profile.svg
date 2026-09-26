@@ -186,7 +186,7 @@
     </g>
 
     <!-- ============================================ -->
-    <!-- HERO SECTION (Badge Removed per Gambar 2)     -->
+    <!-- HERO SECTION -->
     <!-- ============================================ -->
     <g id="hero" transform="translate(50, 135)">
       <!-- Main Title -->
@@ -211,8 +211,6 @@
 
     <!-- ============================================ -->
     <!-- ABOUT ME CARD (Frosted Glass)                -->
-    <!-- // ABOUT ME removed per Gambar 3            -->
-    <!-- Discord bar removed per Gambar 1             -->
     <!-- ============================================ -->
     <g id="about" transform="translate(44, 350)">
       <!-- Card Background -->
@@ -276,9 +274,7 @@
     </g>
 
     <!-- ============================================ -->
-    <!-- SKILLS SECTION (3 Premium Glass Cards)       -->
-    <!-- // KEAHLIAN SAYA removed per Gambar 4        -->
-    <!-- & Competencies removed per Gambar 5          -->
+    <!-- SKILLS SECTION (Premium Glass Chip Cards)    -->
     <!-- ============================================ -->
     <g id="skills" transform="translate(44, 635)">
       <!-- Section Header -->
@@ -291,102 +287,146 @@
         <circle cx="28" cy="0" r="3" fill="rgba(74,168,216,0.2)"/>
       </g>
 
-      <!-- Skills Grid -->
+      <!-- Skills Grid (Sleek Cards with Individual Tag Pills) -->
       <g transform="translate(0, 20)">
         <!-- ===== Card 1: Frontend ===== -->
         <g transform="translate(0, 0)">
-          <rect width="250" height="215" rx="22" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
+          <rect width="252" height="216" rx="20" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
           <!-- Top accent line -->
-          <rect x="22" y="0" width="50" height="2.5" rx="1.25" fill="#5865F2" opacity="0.6"/>
+          <rect x="18" y="0" width="56" height="2.5" rx="1.25" fill="#5865F2" opacity="0.8"/>
 
-          <g transform="translate(24, 28)">
-            <!-- Icon + Title -->
-            <text x="0" y="0" font-size="20">🎨</text>
-            <text x="30" y="0" class="font-sans" font-size="16" font-weight="700" fill="#ffffff">Front-end</text>
-            <text x="0" y="26" class="font-sans" font-size="10.5" font-weight="600" fill="#7c6aef" letter-spacing="0.5px">MODERN UI / UX</text>
+          <!-- Header: Icon Badge + Titles -->
+          <rect x="18" y="16" width="36" height="36" rx="10" fill="rgba(88,101,242,0.15)" stroke="rgba(88,101,242,0.35)" stroke-width="0.8"/>
+          <!-- Monitor Vector Icon -->
+          <rect x="25" y="23" width="22" height="15" rx="2" fill="none" stroke="#5865F2" stroke-width="1.5"/>
+          <line x1="31" y1="38" x2="41" y2="38" stroke="#5865F2" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="36" y1="38" x2="36" y2="42" stroke="#5865F2" stroke-width="1.5"/>
+          <line x1="30" y1="42" x2="42" y2="42" stroke="#5865F2" stroke-width="1.5" stroke-linecap="round"/>
 
-            <!-- Divider -->
-            <line x1="0" y1="38" x2="200" y2="38" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+          <text x="64" y="32" class="font-sans" font-size="16" font-weight="700" fill="#ffffff">Front-end</text>
+          <text x="64" y="47" class="font-sans" font-size="9.5" font-weight="600" fill="#7c6aef" letter-spacing="0.8px">MODERN UI / UX</text>
 
-            <!-- Skills List -->
-            <g transform="translate(0, 55)">
-              <circle cx="4" cy="-4" r="2.5" fill="rgba(88,101,242,0.5)"/>
-              <text x="14" y="0" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">React / Next.js / Vue.js</text>
+          <!-- Divider -->
+          <line x1="18" y1="64" x2="234" y2="64" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
 
-              <circle cx="4" cy="20" r="2.5" fill="rgba(88,101,242,0.4)"/>
-              <text x="14" y="24" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">TypeScript / Tailwind CSS</text>
+          <!-- Skill Pills (Clean Grid) -->
+          <rect x="18" y="76" width="56" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="46" y="92" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">React</text>
+          <rect x="80" y="76" width="64" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="112" y="92" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Next.js</text>
+          <rect x="150" y="76" width="58" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="179" y="92" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Vue.js</text>
 
-              <circle cx="4" cy="44" r="2.5" fill="rgba(88,101,242,0.3)"/>
-              <text x="14" y="48" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">HTML5 / SCSS / Redux</text>
+          <rect x="18" y="108" width="86" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="61" y="124" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">TypeScript</text>
+          <rect x="110" y="108" width="98" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="159" y="124" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Tailwind CSS</text>
 
-              <circle cx="4" cy="68" r="2.5" fill="rgba(88,101,242,0.2)"/>
-              <text x="14" y="72" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">GraphQL / Vite / Nuxt</text>
-            </g>
-          </g>
+          <rect x="18" y="140" width="96" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="66" y="156" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">HTML5 / CSS3</text>
+          <rect x="120" y="140" width="58" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="149" y="156" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Redux</text>
+
+          <rect x="18" y="172" width="70" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="53" y="188" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">GraphQL</text>
+          <rect x="94" y="172" width="50" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="119" y="188" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Vite</text>
+          <rect x="150" y="172" width="60" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="180" y="188" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Nuxt.js</text>
         </g>
 
         <!-- ===== Card 2: Backend ===== -->
-        <g transform="translate(271, 0)">
-          <rect width="250" height="215" rx="22" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
+        <g transform="translate(270, 0)">
+          <rect width="252" height="216" rx="20" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
           <!-- Top accent line -->
-          <rect x="22" y="0" width="50" height="2.5" rx="1.25" fill="#7c6aef" opacity="0.6"/>
+          <rect x="18" y="0" width="56" height="2.5" rx="1.25" fill="#7c6aef" opacity="0.8"/>
 
-          <g transform="translate(24, 28)">
-            <!-- Icon + Title -->
-            <text x="0" y="0" font-size="20">⚡</text>
-            <text x="30" y="0" class="font-sans" font-size="16" font-weight="700" fill="#ffffff">Back-end</text>
-            <text x="0" y="26" class="font-sans" font-size="10.5" font-weight="600" fill="#7c6aef" letter-spacing="0.5px">API &amp; ARCHITECTURE</text>
+          <!-- Header: Icon Badge + Titles -->
+          <rect x="18" y="16" width="36" height="36" rx="10" fill="rgba(124,106,239,0.15)" stroke="rgba(124,106,239,0.35)" stroke-width="0.8"/>
+          <!-- Server Vector Icon -->
+          <ellipse cx="36" cy="24" rx="9" ry="3" fill="none" stroke="#7c6aef" stroke-width="1.5"/>
+          <path d="M27 24 v5 c0 1.6 4 3 9 3 s9 -1.4 9 -3 v-5" fill="none" stroke="#7c6aef" stroke-width="1.5"/>
+          <path d="M27 29 v5 c0 1.6 4 3 9 3 s9 -1.4 9 -3 v-5" fill="none" stroke="#7c6aef" stroke-width="1.5"/>
+          <path d="M27 34 v5 c0 1.6 4 3 9 3 s9 -1.4 9 -3 v-5" fill="none" stroke="#7c6aef" stroke-width="1.5"/>
 
-            <!-- Divider -->
-            <line x1="0" y1="38" x2="200" y2="38" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+          <text x="64" y="32" class="font-sans" font-size="16" font-weight="700" fill="#ffffff">Back-end</text>
+          <text x="64" y="47" class="font-sans" font-size="9.5" font-weight="600" fill="#a8b4ff" letter-spacing="0.8px">API &amp; ARCHITECTURE</text>
 
-            <!-- Skills List -->
-            <g transform="translate(0, 55)">
-              <circle cx="4" cy="-4" r="2.5" fill="rgba(124,106,239,0.5)"/>
-              <text x="14" y="0" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">Node.js / Express / NestJS</text>
+          <!-- Divider -->
+          <line x1="18" y1="64" x2="234" y2="64" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
 
-              <circle cx="4" cy="20" r="2.5" fill="rgba(124,106,239,0.4)"/>
-              <text x="14" y="24" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">Golang / Gin / GORM</text>
+          <!-- Skill Pills (Clean Grid) -->
+          <rect x="18" y="76" width="66" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="51" y="92" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Node.js</text>
+          <rect x="90" y="76" width="64" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="122" y="92" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Express</text>
+          <rect x="160" y="76" width="60" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="190" y="92" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">NestJS</text>
 
-              <circle cx="4" cy="44" r="2.5" fill="rgba(124,106,239,0.3)"/>
-              <text x="14" y="48" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">PostgreSQL / MySQL</text>
+          <rect x="18" y="108" width="60" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="48" y="124" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Golang</text>
+          <rect x="84" y="108" width="88" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="128" y="124" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">PostgreSQL</text>
+          <rect x="178" y="108" width="50" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="203" y="124" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Redis</text>
 
-              <circle cx="4" cy="68" r="2.5" fill="rgba(124,106,239,0.2)"/>
-              <text x="14" y="72" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">MongoDB / Redis / Kafka</text>
-            </g>
-          </g>
+          <rect x="18" y="140" width="58" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="47" y="156" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">MySQL</text>
+          <rect x="82" y="140" width="74" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="119" y="156" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">MongoDB</text>
+          <rect x="162" y="140" width="56" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="190" y="156" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">GORM</text>
+
+          <rect x="18" y="172" width="78" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="57" y="188" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">REST APIs</text>
+          <rect x="102" y="172" width="54" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="129" y="188" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Kafka</text>
+          <rect x="162" y="172" width="46" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="185" y="188" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Gin</text>
         </g>
 
         <!-- ===== Card 3: DevOps ===== -->
-        <g transform="translate(542, 0)">
-          <rect width="250" height="215" rx="22" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
+        <g transform="translate(540, 0)">
+          <rect width="252" height="216" rx="20" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
           <!-- Top accent line -->
-          <rect x="22" y="0" width="50" height="2.5" rx="1.25" fill="#4aa8d8" opacity="0.6"/>
+          <rect x="18" y="0" width="56" height="2.5" rx="1.25" fill="#4aa8d8" opacity="0.8"/>
 
-          <g transform="translate(24, 28)">
-            <!-- Icon + Title -->
-            <text x="0" y="0" font-size="20">🚀</text>
-            <text x="30" y="0" class="font-sans" font-size="16" font-weight="700" fill="#ffffff">DevOps</text>
-            <text x="0" y="26" class="font-sans" font-size="10.5" font-weight="600" fill="#4aa8d8" letter-spacing="0.5px">DEPLOY &amp; CLOUD</text>
+          <!-- Header: Icon Badge + Titles -->
+          <rect x="18" y="16" width="36" height="36" rx="10" fill="rgba(74,168,216,0.15)" stroke="rgba(74,168,216,0.35)" stroke-width="0.8"/>
+          <!-- Cloud Vector Icon -->
+          <path d="M29 38 c-2.5 0 -4 -1.6 -4 -3.8 c0 -1.8 1.2 -3.2 2.8 -3.6 c0.3 -2.8 2.6 -4.8 5.6 -4.8 c2.8 0 5 1.8 5.5 4.5 c1.8 0.3 3.1 1.8 3.1 3.7 c0 2.2 -1.8 4 -4 4 Z" fill="none" stroke="#4aa8d8" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M33 33 L36 36 L41 31" fill="none" stroke="#4aa8d8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 
-            <!-- Divider -->
-            <line x1="0" y1="38" x2="200" y2="38" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+          <text x="64" y="32" class="font-sans" font-size="16" font-weight="700" fill="#ffffff">DevOps</text>
+          <text x="64" y="47" class="font-sans" font-size="9.5" font-weight="600" fill="#7dd3fc" letter-spacing="0.8px">DEPLOY &amp; CLOUD</text>
 
-            <!-- Skills List -->
-            <g transform="translate(0, 55)">
-              <circle cx="4" cy="-4" r="2.5" fill="rgba(74,168,216,0.5)"/>
-              <text x="14" y="0" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">Docker / Kubernetes</text>
+          <!-- Divider -->
+          <line x1="18" y1="64" x2="234" y2="64" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
 
-              <circle cx="4" cy="20" r="2.5" fill="rgba(74,168,216,0.4)"/>
-              <text x="14" y="24" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">Git / GitHub Actions</text>
+          <!-- Skill Pills (Clean Grid) -->
+          <rect x="18" y="76" width="62" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="49" y="92" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Docker</text>
+          <rect x="86" y="76" width="88" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="130" y="92" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Kubernetes</text>
+          <rect x="180" y="76" width="44" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="202" y="92" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Git</text>
 
-              <circle cx="4" cy="44" r="2.5" fill="rgba(74,168,216,0.3)"/>
-              <text x="14" y="48" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">Linux / Bash / Nginx</text>
+          <rect x="18" y="108" width="110" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="73" y="124" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">GitHub Actions</text>
+          <rect x="134" y="108" width="54" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="161" y="124" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Linux</text>
 
-              <circle cx="4" cy="68" r="2.5" fill="rgba(74,168,216,0.2)"/>
-              <text x="14" y="72" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">CI/CD / Grafana</text>
-            </g>
-          </g>
+          <rect x="18" y="140" width="58" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="47" y="156" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Nginx</text>
+          <rect x="82" y="140" width="64" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="114" y="156" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">CI / CD</text>
+          <rect x="152" y="140" width="52" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="178" y="156" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Bash</text>
+
+          <rect x="18" y="172" width="68" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="52" y="188" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Grafana</text>
+          <rect x="92" y="172" width="90" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="137" y="188" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">Prometheus</text>
         </g>
       </g>
     </g>

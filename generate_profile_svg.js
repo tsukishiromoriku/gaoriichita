@@ -5,6 +5,11 @@ const assetsDir = path.join(__dirname, 'assets');
 const catBase64 = fs.readFileSync(path.join(assetsDir, 'cat_thumb.jpg')).toString('base64');
 const mountainBase64 = fs.readFileSync(path.join(assetsDir, 'mountain_thumb.jpg')).toString('base64');
 
+function pill(x, y, w, text) {
+  return `<rect x="${x}" y="${y}" width="${w}" height="24" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <text x="${x + w / 2}" y="${y + 16}" class="font-sans" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)" text-anchor="middle">${text}</text>`;
+}
+
 function buildSvg() {
   return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 880 960" width="880" height="960" fill="none">
   <defs>
@@ -194,7 +199,7 @@ function buildSvg() {
     </g>
 
     <!-- ============================================ -->
-    <!-- HERO SECTION (Badge Removed per Gambar 2)     -->
+    <!-- HERO SECTION -->
     <!-- ============================================ -->
     <g id="hero" transform="translate(50, 135)">
       <!-- Main Title -->
@@ -219,8 +224,6 @@ function buildSvg() {
 
     <!-- ============================================ -->
     <!-- ABOUT ME CARD (Frosted Glass)                -->
-    <!-- // ABOUT ME removed per Gambar 3            -->
-    <!-- Discord bar removed per Gambar 1             -->
     <!-- ============================================ -->
     <g id="about" transform="translate(44, 350)">
       <!-- Card Background -->
@@ -284,9 +287,7 @@ function buildSvg() {
     </g>
 
     <!-- ============================================ -->
-    <!-- SKILLS SECTION (3 Premium Glass Cards)       -->
-    <!-- // KEAHLIAN SAYA removed per Gambar 4        -->
-    <!-- & Competencies removed per Gambar 5          -->
+    <!-- SKILLS SECTION (Premium Glass Chip Cards)    -->
     <!-- ============================================ -->
     <g id="skills" transform="translate(44, 635)">
       <!-- Section Header -->
@@ -299,102 +300,114 @@ function buildSvg() {
         <circle cx="28" cy="0" r="3" fill="rgba(74,168,216,0.2)"/>
       </g>
 
-      <!-- Skills Grid -->
+      <!-- Skills Grid (Sleek Cards with Individual Tag Pills) -->
       <g transform="translate(0, 20)">
         <!-- ===== Card 1: Frontend ===== -->
         <g transform="translate(0, 0)">
-          <rect width="250" height="215" rx="22" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
+          <rect width="252" height="216" rx="20" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
           <!-- Top accent line -->
-          <rect x="22" y="0" width="50" height="2.5" rx="1.25" fill="#5865F2" opacity="0.6"/>
+          <rect x="18" y="0" width="56" height="2.5" rx="1.25" fill="#5865F2" opacity="0.8"/>
 
-          <g transform="translate(24, 28)">
-            <!-- Icon + Title -->
-            <text x="0" y="0" font-size="20">🎨</text>
-            <text x="30" y="0" class="font-sans" font-size="16" font-weight="700" fill="#ffffff">Front-end</text>
-            <text x="0" y="26" class="font-sans" font-size="10.5" font-weight="600" fill="#7c6aef" letter-spacing="0.5px">MODERN UI / UX</text>
+          <!-- Header: Icon Badge + Titles -->
+          <rect x="18" y="16" width="36" height="36" rx="10" fill="rgba(88,101,242,0.15)" stroke="rgba(88,101,242,0.35)" stroke-width="0.8"/>
+          <!-- Monitor Vector Icon -->
+          <rect x="25" y="23" width="22" height="15" rx="2" fill="none" stroke="#5865F2" stroke-width="1.5"/>
+          <line x1="31" y1="38" x2="41" y2="38" stroke="#5865F2" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="36" y1="38" x2="36" y2="42" stroke="#5865F2" stroke-width="1.5"/>
+          <line x1="30" y1="42" x2="42" y2="42" stroke="#5865F2" stroke-width="1.5" stroke-linecap="round"/>
 
-            <!-- Divider -->
-            <line x1="0" y1="38" x2="200" y2="38" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+          <text x="64" y="32" class="font-sans" font-size="16" font-weight="700" fill="#ffffff">Front-end</text>
+          <text x="64" y="47" class="font-sans" font-size="9.5" font-weight="600" fill="#7c6aef" letter-spacing="0.8px">MODERN UI / UX</text>
 
-            <!-- Skills List -->
-            <g transform="translate(0, 55)">
-              <circle cx="4" cy="-4" r="2.5" fill="rgba(88,101,242,0.5)"/>
-              <text x="14" y="0" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">React / Next.js / Vue.js</text>
+          <!-- Divider -->
+          <line x1="18" y1="64" x2="234" y2="64" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
 
-              <circle cx="4" cy="20" r="2.5" fill="rgba(88,101,242,0.4)"/>
-              <text x="14" y="24" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">TypeScript / Tailwind CSS</text>
+          <!-- Skill Pills (Clean Grid) -->
+          ${pill(18, 76, 56, 'React')}
+          ${pill(80, 76, 64, 'Next.js')}
+          ${pill(150, 76, 58, 'Vue.js')}
 
-              <circle cx="4" cy="44" r="2.5" fill="rgba(88,101,242,0.3)"/>
-              <text x="14" y="48" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">HTML5 / SCSS / Redux</text>
+          ${pill(18, 108, 86, 'TypeScript')}
+          ${pill(110, 108, 98, 'Tailwind CSS')}
 
-              <circle cx="4" cy="68" r="2.5" fill="rgba(88,101,242,0.2)"/>
-              <text x="14" y="72" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">GraphQL / Vite / Nuxt</text>
-            </g>
-          </g>
+          ${pill(18, 140, 96, 'HTML5 / CSS3')}
+          ${pill(120, 140, 58, 'Redux')}
+
+          ${pill(18, 172, 70, 'GraphQL')}
+          ${pill(94, 172, 50, 'Vite')}
+          ${pill(150, 172, 60, 'Nuxt.js')}
         </g>
 
         <!-- ===== Card 2: Backend ===== -->
-        <g transform="translate(271, 0)">
-          <rect width="250" height="215" rx="22" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
+        <g transform="translate(270, 0)">
+          <rect width="252" height="216" rx="20" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
           <!-- Top accent line -->
-          <rect x="22" y="0" width="50" height="2.5" rx="1.25" fill="#7c6aef" opacity="0.6"/>
+          <rect x="18" y="0" width="56" height="2.5" rx="1.25" fill="#7c6aef" opacity="0.8"/>
 
-          <g transform="translate(24, 28)">
-            <!-- Icon + Title -->
-            <text x="0" y="0" font-size="20">⚡</text>
-            <text x="30" y="0" class="font-sans" font-size="16" font-weight="700" fill="#ffffff">Back-end</text>
-            <text x="0" y="26" class="font-sans" font-size="10.5" font-weight="600" fill="#7c6aef" letter-spacing="0.5px">API &amp; ARCHITECTURE</text>
+          <!-- Header: Icon Badge + Titles -->
+          <rect x="18" y="16" width="36" height="36" rx="10" fill="rgba(124,106,239,0.15)" stroke="rgba(124,106,239,0.35)" stroke-width="0.8"/>
+          <!-- Server Vector Icon -->
+          <ellipse cx="36" cy="24" rx="9" ry="3" fill="none" stroke="#7c6aef" stroke-width="1.5"/>
+          <path d="M27 24 v5 c0 1.6 4 3 9 3 s9 -1.4 9 -3 v-5" fill="none" stroke="#7c6aef" stroke-width="1.5"/>
+          <path d="M27 29 v5 c0 1.6 4 3 9 3 s9 -1.4 9 -3 v-5" fill="none" stroke="#7c6aef" stroke-width="1.5"/>
+          <path d="M27 34 v5 c0 1.6 4 3 9 3 s9 -1.4 9 -3 v-5" fill="none" stroke="#7c6aef" stroke-width="1.5"/>
 
-            <!-- Divider -->
-            <line x1="0" y1="38" x2="200" y2="38" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+          <text x="64" y="32" class="font-sans" font-size="16" font-weight="700" fill="#ffffff">Back-end</text>
+          <text x="64" y="47" class="font-sans" font-size="9.5" font-weight="600" fill="#a8b4ff" letter-spacing="0.8px">API &amp; ARCHITECTURE</text>
 
-            <!-- Skills List -->
-            <g transform="translate(0, 55)">
-              <circle cx="4" cy="-4" r="2.5" fill="rgba(124,106,239,0.5)"/>
-              <text x="14" y="0" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">Node.js / Express / NestJS</text>
+          <!-- Divider -->
+          <line x1="18" y1="64" x2="234" y2="64" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
 
-              <circle cx="4" cy="20" r="2.5" fill="rgba(124,106,239,0.4)"/>
-              <text x="14" y="24" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">Golang / Gin / GORM</text>
+          <!-- Skill Pills (Clean Grid) -->
+          ${pill(18, 76, 66, 'Node.js')}
+          ${pill(90, 76, 64, 'Express')}
+          ${pill(160, 76, 60, 'NestJS')}
 
-              <circle cx="4" cy="44" r="2.5" fill="rgba(124,106,239,0.3)"/>
-              <text x="14" y="48" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">PostgreSQL / MySQL</text>
+          ${pill(18, 108, 60, 'Golang')}
+          ${pill(84, 108, 88, 'PostgreSQL')}
+          ${pill(178, 108, 50, 'Redis')}
 
-              <circle cx="4" cy="68" r="2.5" fill="rgba(124,106,239,0.2)"/>
-              <text x="14" y="72" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">MongoDB / Redis / Kafka</text>
-            </g>
-          </g>
+          ${pill(18, 140, 58, 'MySQL')}
+          ${pill(82, 140, 74, 'MongoDB')}
+          ${pill(162, 140, 56, 'GORM')}
+
+          ${pill(18, 172, 78, 'REST APIs')}
+          ${pill(102, 172, 54, 'Kafka')}
+          ${pill(162, 172, 46, 'Gin')}
         </g>
 
         <!-- ===== Card 3: DevOps ===== -->
-        <g transform="translate(542, 0)">
-          <rect width="250" height="215" rx="22" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
+        <g transform="translate(540, 0)">
+          <rect width="252" height="216" rx="20" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
           <!-- Top accent line -->
-          <rect x="22" y="0" width="50" height="2.5" rx="1.25" fill="#4aa8d8" opacity="0.6"/>
+          <rect x="18" y="0" width="56" height="2.5" rx="1.25" fill="#4aa8d8" opacity="0.8"/>
 
-          <g transform="translate(24, 28)">
-            <!-- Icon + Title -->
-            <text x="0" y="0" font-size="20">🚀</text>
-            <text x="30" y="0" class="font-sans" font-size="16" font-weight="700" fill="#ffffff">DevOps</text>
-            <text x="0" y="26" class="font-sans" font-size="10.5" font-weight="600" fill="#4aa8d8" letter-spacing="0.5px">DEPLOY &amp; CLOUD</text>
+          <!-- Header: Icon Badge + Titles -->
+          <rect x="18" y="16" width="36" height="36" rx="10" fill="rgba(74,168,216,0.15)" stroke="rgba(74,168,216,0.35)" stroke-width="0.8"/>
+          <!-- Cloud Vector Icon -->
+          <path d="M29 38 c-2.5 0 -4 -1.6 -4 -3.8 c0 -1.8 1.2 -3.2 2.8 -3.6 c0.3 -2.8 2.6 -4.8 5.6 -4.8 c2.8 0 5 1.8 5.5 4.5 c1.8 0.3 3.1 1.8 3.1 3.7 c0 2.2 -1.8 4 -4 4 Z" fill="none" stroke="#4aa8d8" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M33 33 L36 36 L41 31" fill="none" stroke="#4aa8d8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 
-            <!-- Divider -->
-            <line x1="0" y1="38" x2="200" y2="38" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+          <text x="64" y="32" class="font-sans" font-size="16" font-weight="700" fill="#ffffff">DevOps</text>
+          <text x="64" y="47" class="font-sans" font-size="9.5" font-weight="600" fill="#7dd3fc" letter-spacing="0.8px">DEPLOY &amp; CLOUD</text>
 
-            <!-- Skills List -->
-            <g transform="translate(0, 55)">
-              <circle cx="4" cy="-4" r="2.5" fill="rgba(74,168,216,0.5)"/>
-              <text x="14" y="0" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">Docker / Kubernetes</text>
+          <!-- Divider -->
+          <line x1="18" y1="64" x2="234" y2="64" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
 
-              <circle cx="4" cy="20" r="2.5" fill="rgba(74,168,216,0.4)"/>
-              <text x="14" y="24" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">Git / GitHub Actions</text>
+          <!-- Skill Pills (Clean Grid) -->
+          ${pill(18, 76, 62, 'Docker')}
+          ${pill(86, 76, 88, 'Kubernetes')}
+          ${pill(180, 76, 44, 'Git')}
 
-              <circle cx="4" cy="44" r="2.5" fill="rgba(74,168,216,0.3)"/>
-              <text x="14" y="48" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">Linux / Bash / Nginx</text>
+          ${pill(18, 108, 110, 'GitHub Actions')}
+          ${pill(134, 108, 54, 'Linux')}
 
-              <circle cx="4" cy="68" r="2.5" fill="rgba(74,168,216,0.2)"/>
-              <text x="14" y="72" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">CI/CD / Grafana</text>
-            </g>
-          </g>
+          ${pill(18, 140, 58, 'Nginx')}
+          ${pill(82, 140, 64, 'CI / CD')}
+          ${pill(152, 140, 52, 'Bash')}
+
+          ${pill(18, 172, 68, 'Grafana')}
+          ${pill(92, 172, 90, 'Prometheus')}
         </g>
       </g>
     </g>
@@ -426,5 +439,5 @@ function buildSvg() {
 
 const svg = buildSvg();
 fs.writeFileSync(path.join(__dirname, 'github-profile.svg'), svg);
-console.log('✅ Premium glassmorphism SVG generated!');
+console.log('✅ Premium glassmorphism SVG with neat tech pills generated!');
 console.log('   Size:', (svg.length / 1024).toFixed(2), 'KB');
