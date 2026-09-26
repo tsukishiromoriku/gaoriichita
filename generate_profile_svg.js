@@ -77,12 +77,19 @@ function buildSvg() {
 
     <!-- Gradients -->
     <linearGradient id="bg-fade" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#0a0e1a" stop-opacity="0"/>
-      <stop offset="25%" stop-color="#0a0e1a" stop-opacity="0.3"/>
-      <stop offset="50%" stop-color="#0a0e1a" stop-opacity="0.85"/>
-      <stop offset="75%" stop-color="#0c1020" stop-opacity="0.97"/>
-      <stop offset="100%" stop-color="#0c1020" stop-opacity="1"/>
+      <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="25%" stop-color="#000000" stop-opacity="0.25"/>
+      <stop offset="50%" stop-color="#000000" stop-opacity="0.65"/>
+      <stop offset="70%" stop-color="#000000" stop-opacity="0.9"/>
+      <stop offset="85%" stop-color="#000000" stop-opacity="0.99"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="1"/>
     </linearGradient>
+
+    <radialGradient id="hero-vignette" cx="20%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.55"/>
+      <stop offset="65%" stop-color="#000000" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
 
     <linearGradient id="glass-card" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.07"/>
@@ -103,8 +110,8 @@ function buildSvg() {
 
     <linearGradient id="title-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="60%" stop-color="#e0e4ff"/>
-      <stop offset="100%" stop-color="#a8b4ff"/>
+      <stop offset="60%" stop-color="#f0f2ff"/>
+      <stop offset="100%" stop-color="#b4c0ff"/>
     </linearGradient>
 
     <linearGradient id="nav-pill-bg" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -113,15 +120,15 @@ function buildSvg() {
     </linearGradient>
 
     <radialGradient id="ambient-glow-1" cx="15%" cy="20%" r="40%">
-      <stop offset="0%" stop-color="#5865F2" stop-opacity="0.06">
-        <animate attributeName="stop-opacity" values="0.06;0.12;0.06" dur="6s" repeatCount="indefinite"/>
+      <stop offset="0%" stop-color="#5865F2" stop-opacity="0.08">
+        <animate attributeName="stop-opacity" values="0.08;0.14;0.08" dur="6s" repeatCount="indefinite"/>
       </stop>
       <stop offset="100%" stop-color="#5865F2" stop-opacity="0"/>
     </radialGradient>
 
     <radialGradient id="ambient-glow-2" cx="85%" cy="70%" r="35%">
-      <stop offset="0%" stop-color="#7c6aef" stop-opacity="0.04">
-        <animate attributeName="stop-opacity" values="0.04;0.09;0.04" dur="8s" repeatCount="indefinite"/>
+      <stop offset="0%" stop-color="#7c6aef" stop-opacity="0.05">
+        <animate attributeName="stop-opacity" values="0.05;0.10;0.05" dur="8s" repeatCount="indefinite"/>
       </stop>
       <stop offset="100%" stop-color="#7c6aef" stop-opacity="0"/>
     </radialGradient>
@@ -134,19 +141,25 @@ function buildSvg() {
       <rect x="565" y="25" width="190" height="205" rx="20"/>
     </clipPath>
     <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000000" flood-opacity="0.4"/>
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+    <filter id="text-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="#000000" flood-opacity="0.9"/>
     </filter>
   </defs>
 
   <g clip-path="url(#outer-clip)">
-    <!-- ============== BASE BACKGROUND ============== -->
-    <rect width="880" height="960" fill="#0c1020"/>
+    <!-- ============== BASE BACKGROUND (PURE BLACK) ============== -->
+    <rect width="880" height="960" fill="#000000"/>
 
-    <!-- Mountain Background -->
-    <image href="data:image/jpeg;base64,${mountainBase64}" xlink:href="data:image/jpeg;base64,${mountainBase64}" x="0" y="0" width="880" height="520" preserveAspectRatio="xMidYMin slice" opacity="0.9"/>
+    <!-- Mountain Landscape Background -->
+    <image href="data:image/jpeg;base64,${mountainBase64}" xlink:href="data:image/jpeg;base64,${mountainBase64}" x="0" y="0" width="880" height="520" preserveAspectRatio="xMidYMin slice" opacity="0.95"/>
 
-    <!-- Gradient Fade Over Mountain -->
-    <rect x="0" y="100" width="880" height="860" fill="url(#bg-fade)"/>
+    <!-- Smooth Seamless Fade Over Mountain into Pure Black (No divider/boundary) -->
+    <rect x="0" y="60" width="880" height="900" fill="url(#bg-fade)"/>
+
+    <!-- Hero Text Readability Vignette -->
+    <rect x="0" y="60" width="620" height="260" fill="url(#hero-vignette)"/>
 
     <!-- Ambient Glow Effects -->
     <rect width="880" height="960" fill="url(#ambient-glow-1)"/>
@@ -159,19 +172,6 @@ function buildSvg() {
     <circle cx="750" cy="80" r="1.2" fill="#ffffff" opacity="0.4" class="star-pulse-delay"/>
     <circle cx="200" cy="100" r="0.8" fill="#ffffff" opacity="0.3" class="star-pulse"/>
     <circle cx="680" cy="40" r="1" fill="#ffffff" opacity="0.5" class="star-pulse"/>
-
-    <!-- Fine Grid Lines (Subtle Design Element) -->
-    <line x1="44" y1="0" x2="44" y2="960" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
-    <line x1="836" y1="0" x2="836" y2="960" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
-    <line x1="0" y1="44" x2="880" y2="44" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
-
-    <!-- Corner Crosshairs -->
-    <g opacity="0.3">
-      <line x1="30" y1="30" x2="58" y2="30" stroke="#ffffff" stroke-width="0.5"/>
-      <line x1="44" y1="16" x2="44" y2="44" stroke="#ffffff" stroke-width="0.5"/>
-      <line x1="822" y1="30" x2="850" y2="30" stroke="#ffffff" stroke-width="0.5"/>
-      <line x1="836" y1="16" x2="836" y2="44" stroke="#ffffff" stroke-width="0.5"/>
-    </g>
 
     <!-- ============================================ -->
     <!-- NAVBAR -->
@@ -197,20 +197,20 @@ function buildSvg() {
     <!-- ============================================ -->
     <!-- HERO SECTION -->
     <!-- ============================================ -->
-    <g id="hero" transform="translate(50, 135)">
+    <g id="hero" transform="translate(50, 135)" filter="url(#text-glow)">
       <!-- Main Title -->
       <text x="0" y="44" class="font-sans" font-size="52" font-weight="800" fill="url(#title-gradient)" letter-spacing="-1.5px">
         Building Digital
       </text>
       <text x="0" y="100" class="font-sans" font-size="52" font-weight="800" fill="url(#title-gradient)" letter-spacing="-1.5px">
-        Dreams <tspan class="font-display" font-weight="400" font-style="italic" fill="rgba(255,255,255,0.7)" font-size="46">with code.</tspan>
+        Dreams <tspan class="font-display" font-weight="400" font-style="italic" fill="rgba(255,255,255,0.9)" font-size="46">with code.</tspan>
       </text>
 
       <!-- Subtitle -->
-      <text x="0" y="142" class="font-sans" font-size="14" fill="rgba(255,255,255,0.6)" letter-spacing="0.2px">
+      <text x="0" y="142" class="font-sans" font-size="14" fill="rgba(255,255,255,0.85)" letter-spacing="0.2px">
         Full-stack developer crafting scalable web applications,
       </text>
-      <text x="0" y="164" class="font-sans" font-size="14" fill="rgba(255,255,255,0.6)" letter-spacing="0.2px">
+      <text x="0" y="164" class="font-sans" font-size="14" fill="rgba(255,255,255,0.85)" letter-spacing="0.2px">
         responsive interfaces, and reliable backend services.
       </text>
 
