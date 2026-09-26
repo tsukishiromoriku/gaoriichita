@@ -177,10 +177,6 @@ function buildSvg() {
     <!-- NAVBAR -->
     <!-- ============================================ -->
     <g id="navbar" transform="translate(44, 54)">
-      <!-- Logo -->
-      <text x="0" y="0" class="font-display" font-size="26" font-weight="700" fill="#ffffff" letter-spacing="2px">GAORI</text>
-      <text x="90" y="-2" class="font-sans" font-size="9" font-weight="600" fill="rgba(255,255,255,0.5)" letter-spacing="3px">DEV</text>
-
       <!-- Nav Items Right Side -->
       <g transform="translate(530, -14)">
         <!-- About pill -->
