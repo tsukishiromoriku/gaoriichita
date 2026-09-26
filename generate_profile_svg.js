@@ -6,7 +6,7 @@ const catBase64 = fs.readFileSync(path.join(assetsDir, 'cat_thumb.jpg')).toStrin
 const mountainBase64 = fs.readFileSync(path.join(assetsDir, 'mountain_thumb.jpg')).toString('base64');
 
 function buildSvg() {
-  return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 880 1200" width="880" height="1200" fill="none">
+  return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 880 960" width="880" height="960" fill="none">
   <defs>
     <style>
       @keyframes float {
@@ -33,10 +33,6 @@ function buildSvg() {
       @keyframes fadeSlideUp {
         from { opacity: 0; transform: translateY(12px); }
         to { opacity: 1; transform: translateY(0); }
-      }
-      @keyframes orbitSlow {
-        0% { transform: rotate(0deg) translateX(180px) rotate(0deg); }
-        100% { transform: rotate(360deg) translateX(180px) rotate(-360deg); }
       }
       @keyframes breathe {
         0%, 100% { transform: scale(1); }
@@ -106,16 +102,6 @@ function buildSvg() {
       <stop offset="100%" stop-color="#a8b4ff"/>
     </linearGradient>
 
-    <linearGradient id="pill-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08"/>
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.04"/>
-    </linearGradient>
-
-    <linearGradient id="discord-btn" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#5865F2"/>
-      <stop offset="100%" stop-color="#7c6aef"/>
-    </linearGradient>
-
     <linearGradient id="nav-pill-bg" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.1"/>
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/>
@@ -137,10 +123,10 @@ function buildSvg() {
 
     <!-- Clips -->
     <clipPath id="outer-clip">
-      <rect x="0" y="0" width="880" height="1200" rx="32"/>
+      <rect x="0" y="0" width="880" height="960" rx="32"/>
     </clipPath>
     <clipPath id="cat-clip">
-      <rect x="575" y="510" width="220" height="220" rx="24"/>
+      <rect x="565" y="370" width="190" height="205" rx="22"/>
     </clipPath>
     <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000000" flood-opacity="0.4"/>
@@ -149,17 +135,17 @@ function buildSvg() {
 
   <g clip-path="url(#outer-clip)">
     <!-- ============== BASE BACKGROUND ============== -->
-    <rect width="880" height="1200" fill="#0c1020"/>
+    <rect width="880" height="960" fill="#0c1020"/>
 
     <!-- Mountain Background -->
     <image href="data:image/jpeg;base64,${mountainBase64}" xlink:href="data:image/jpeg;base64,${mountainBase64}" x="0" y="0" width="880" height="520" preserveAspectRatio="xMidYMin slice" opacity="0.9"/>
 
     <!-- Gradient Fade Over Mountain -->
-    <rect x="0" y="100" width="880" height="1100" fill="url(#bg-fade)"/>
+    <rect x="0" y="100" width="880" height="860" fill="url(#bg-fade)"/>
 
     <!-- Ambient Glow Effects -->
-    <rect width="880" height="1200" fill="url(#ambient-glow-1)"/>
-    <rect width="880" height="1200" fill="url(#ambient-glow-2)"/>
+    <rect width="880" height="960" fill="url(#ambient-glow-1)"/>
+    <rect width="880" height="960" fill="url(#ambient-glow-2)"/>
 
     <!-- Decorative Stars -->
     <circle cx="120" cy="60" r="1.5" fill="#ffffff" opacity="0.7" class="star-pulse"/>
@@ -170,8 +156,8 @@ function buildSvg() {
     <circle cx="680" cy="40" r="1" fill="#ffffff" opacity="0.5" class="star-pulse"/>
 
     <!-- Fine Grid Lines (Subtle Design Element) -->
-    <line x1="44" y1="0" x2="44" y2="1200" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
-    <line x1="836" y1="0" x2="836" y2="1200" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+    <line x1="44" y1="0" x2="44" y2="960" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+    <line x1="836" y1="0" x2="836" y2="960" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
     <line x1="0" y1="44" x2="880" y2="44" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
 
     <!-- Corner Crosshairs -->
@@ -208,98 +194,61 @@ function buildSvg() {
     </g>
 
     <!-- ============================================ -->
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (Badge Removed per Gambar 2)     -->
     <!-- ============================================ -->
-    <g id="hero" transform="translate(50, 155)">
-      <!-- Status Badge -->
-      <g transform="translate(0, 0)">
-        <rect width="175" height="28" rx="14" fill="rgba(88,101,242,0.15)" stroke="rgba(88,101,242,0.35)" stroke-width="0.8"/>
-        <circle cx="16" cy="14" r="4" fill="#22c55e">
-          <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/>
-        </circle>
-        <text x="28" y="18" class="font-mono" font-size="10" font-weight="600" fill="#a8b4ff" letter-spacing="0.8px">Available for work</text>
-      </g>
-
+    <g id="hero" transform="translate(50, 135)">
       <!-- Main Title -->
-      <text x="0" y="70" class="font-sans" font-size="52" font-weight="800" fill="url(#title-gradient)" letter-spacing="-1.5px">
+      <text x="0" y="44" class="font-sans" font-size="52" font-weight="800" fill="url(#title-gradient)" letter-spacing="-1.5px">
         Building Digital
       </text>
-      <text x="0" y="126" class="font-sans" font-size="52" font-weight="800" fill="url(#title-gradient)" letter-spacing="-1.5px">
+      <text x="0" y="100" class="font-sans" font-size="52" font-weight="800" fill="url(#title-gradient)" letter-spacing="-1.5px">
         Dreams <tspan class="font-display" font-weight="400" font-style="italic" fill="rgba(255,255,255,0.7)" font-size="46">with code.</tspan>
       </text>
 
       <!-- Subtitle -->
-      <text x="0" y="170" class="font-sans" font-size="14" fill="rgba(255,255,255,0.6)" letter-spacing="0.2px">
+      <text x="0" y="142" class="font-sans" font-size="14" fill="rgba(255,255,255,0.6)" letter-spacing="0.2px">
         Full-stack developer crafting scalable web applications,
       </text>
-      <text x="0" y="192" class="font-sans" font-size="14" fill="rgba(255,255,255,0.6)" letter-spacing="0.2px">
+      <text x="0" y="164" class="font-sans" font-size="14" fill="rgba(255,255,255,0.6)" letter-spacing="0.2px">
         responsive interfaces, and reliable backend services.
       </text>
 
       <!-- Accent Line -->
-      <rect x="0" y="210" width="60" height="3" rx="1.5" fill="url(#accent-gradient)" class="shimmer-line"/>
+      <rect x="0" y="184" width="60" height="3" rx="1.5" fill="url(#accent-gradient)" class="shimmer-line"/>
     </g>
 
     <!-- ============================================ -->
-    <!-- DISCORD FROSTED PILL BAR -->
+    <!-- ABOUT ME CARD (Frosted Glass)                -->
+    <!-- // ABOUT ME removed per Gambar 3            -->
+    <!-- Discord bar removed per Gambar 1             -->
     <!-- ============================================ -->
-    <g id="discord-bar" transform="translate(50, 390)" class="breathe">
-      <!-- Glass Pill Background -->
-      <rect width="500" height="56" rx="28" fill="url(#pill-gradient)" stroke="rgba(255,255,255,0.18)" stroke-width="1" class="border-glow"/>
-
-      <!-- Discord Icon -->
-      <g transform="translate(22, 18)">
-        <path d="M16.5 3 C15.2 2.4 13.9 2 12.5 1.8 C12.3 2.1 12.1 2.6 12 2.9 C10.4 2.7 8.9 2.7 7.3 2.9 C7.2 2.6 7 2.1 6.8 1.8 C5.4 2 4.1 2.4 2.8 3 C0.3 6.8 -0.4 10.4 0.1 14 C1.8 15.2 3.4 16 5 16.5 C5.4 15.9 5.8 15.3 6.1 14.7 C5.5 14.5 5 14.2 4.4 13.9 C4.5 13.8 4.7 13.7 4.8 13.5 C8 15 11.4 15 14.5 13.5 C14.7 13.7 14.8 13.8 15 13.9 C14.4 14.2 13.9 14.5 13.3 14.7 C13.6 15.3 14 15.9 14.4 16.5 C16 16 17.6 15.2 19.3 14 C19.9 9.8 18.7 6.2 16.5 3 Z M6.4 11.8 C5.4 11.8 4.6 10.9 4.6 9.8 C4.6 8.7 5.4 7.8 6.4 7.8 C7.4 7.8 8.2 8.7 8.2 9.8 C8.2 10.9 7.4 11.8 6.4 11.8 Z M13 11.8 C12 11.8 11.2 10.9 11.2 9.8 C11.2 8.7 12 7.8 13 7.8 C14 7.8 14.8 8.7 14.8 9.8 C14.8 10.9 14 11.8 13 11.8 Z" fill="#5865F2"/>
-      </g>
-
-      <!-- Discord Username -->
-      <text x="56" y="34" class="font-sans" font-size="14" font-weight="500" fill="rgba(255,255,255,0.9)">
-        Discord: <tspan font-weight="700" fill="#ffffff">gaoriichita</tspan>
-      </text>
-
-      <!-- Connect Button -->
-      <g transform="translate(340, 8)">
-        <rect width="148" height="40" rx="20" fill="url(#discord-btn)"/>
-        <text x="58" y="25" class="font-sans" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">Connect</text>
-        <!-- Arrow Circle -->
-        <circle cx="126" cy="20" r="14" fill="rgba(255,255,255,0.2)"/>
-        <path d="M122 16 L128 20 L122 24" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      </g>
-    </g>
-
-    <!-- ============================================ -->
-    <!-- ABOUT ME CARD (Frosted Glass) -->
-    <!-- ============================================ -->
-    <g id="about" transform="translate(44, 475)">
+    <g id="about" transform="translate(44, 350)">
       <!-- Card Background -->
-      <rect width="792" height="290" rx="28" fill="url(#glass-card)" stroke="rgba(255,255,255,0.12)" stroke-width="1" filter="url(#soft-shadow)" class="border-glow"/>
+      <rect width="792" height="255" rx="28" fill="url(#glass-card)" stroke="rgba(255,255,255,0.12)" stroke-width="1" filter="url(#soft-shadow)" class="border-glow"/>
 
       <!-- Inner Glass Highlight Line (top) -->
       <line x1="28" y1="1" x2="200" y2="1" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-linecap="round"/>
 
       <!-- Left Side: About Info -->
-      <g transform="translate(38, 38)">
-        <!-- Section Label -->
-        <text x="0" y="0" class="font-mono" font-size="11" font-weight="700" fill="#7c6aef" letter-spacing="2px">// ABOUT ME</text>
-
+      <g transform="translate(38, 30)">
         <!-- Name -->
-        <text x="0" y="38" class="font-sans" font-size="28" font-weight="800" fill="#ffffff" letter-spacing="-0.5px">Gaori Ichita</text>
+        <text x="0" y="24" class="font-sans" font-size="28" font-weight="800" fill="#ffffff" letter-spacing="-0.5px">Gaori Ichita</text>
 
         <!-- Bio Text -->
-        <text x="0" y="75" class="font-sans" font-size="13.5" fill="rgba(255,255,255,0.8)" letter-spacing="0.2px">
+        <text x="0" y="58" class="font-sans" font-size="13.5" fill="rgba(255,255,255,0.8)" letter-spacing="0.2px">
           Hello! I'm a passionate full-stack developer who loves
         </text>
-        <text x="0" y="97" class="font-sans" font-size="13.5" fill="rgba(255,255,255,0.8)" letter-spacing="0.2px">
+        <text x="0" y="80" class="font-sans" font-size="13.5" fill="rgba(255,255,255,0.8)" letter-spacing="0.2px">
           building fast, reliable web apps and clean user experiences.
         </text>
 
         <!-- Quote -->
-        <text x="0" y="135" class="font-display" font-size="13" fill="rgba(255,255,255,0.55)" font-style="italic">
+        <text x="0" y="116" class="font-display" font-size="13" fill="rgba(255,255,255,0.55)" font-style="italic">
           "Clean code, great architecture, and enjoyable development."
         </text>
 
         <!-- Stats Badges -->
-        <g transform="translate(0, 168)">
+        <g transform="translate(0, 146)">
           <!-- Badge 1 -->
           <rect width="140" height="36" rx="18" fill="rgba(88,101,242,0.12)" stroke="rgba(88,101,242,0.3)" stroke-width="0.8"/>
           <text x="70" y="23" class="font-sans" font-size="11.5" font-weight="600" fill="#b4bcff" text-anchor="middle">5+ Years Exp</text>
@@ -322,39 +271,39 @@ function buildSvg() {
       <!-- Right Side: Cat Photo -->
       <g class="cat-float">
         <!-- Photo Frame Glass Border -->
-        <rect x="560" y="30" width="210" height="230" rx="24" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <rect x="560" y="20" width="200" height="215" rx="22" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
 
         <!-- Cat Image -->
         <g clip-path="url(#cat-clip)">
-          <image href="data:image/jpeg;base64,${catBase64}" xlink:href="data:image/jpeg;base64,${catBase64}" x="565" y="35" width="200" height="220" preserveAspectRatio="xMidYMid slice"/>
+          <image href="data:image/jpeg;base64,${catBase64}" xlink:href="data:image/jpeg;base64,${catBase64}" x="565" y="25" width="190" height="205" preserveAspectRatio="xMidYMid slice"/>
         </g>
 
         <!-- Photo Label -->
-        <text x="665" y="275" class="font-mono" font-size="9" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="1px">MEOW.JPG</text>
+        <text x="660" y="248" class="font-mono" font-size="9" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="1px">MEOW.JPG</text>
       </g>
     </g>
 
     <!-- ============================================ -->
-    <!-- SKILLS SECTION (3 Premium Glass Cards) -->
+    <!-- SKILLS SECTION (3 Premium Glass Cards)       -->
+    <!-- // KEAHLIAN SAYA removed per Gambar 4        -->
+    <!-- & Competencies removed per Gambar 5          -->
     <!-- ============================================ -->
-    <g id="skills" transform="translate(44, 800)">
+    <g id="skills" transform="translate(44, 635)">
       <!-- Section Header -->
-      <text x="0" y="0" class="font-mono" font-size="11" font-weight="700" fill="#7c6aef" letter-spacing="2px">// KEAHLIAN SAYA</text>
-      <text x="0" y="30" class="font-sans" font-size="22" font-weight="700" fill="#ffffff" letter-spacing="-0.3px">Technical Skills</text>
-      <text x="180" y="30" class="font-sans" font-size="22" font-weight="300" fill="rgba(255,255,255,0.5)">&amp; Competencies</text>
+      <text x="0" y="0" class="font-sans" font-size="22" font-weight="700" fill="#ffffff" letter-spacing="-0.3px">Technical Skills</text>
 
       <!-- Decorative dots -->
-      <g transform="translate(700, 10)">
+      <g transform="translate(700, -8)">
         <circle cx="0" cy="0" r="3" fill="rgba(88,101,242,0.4)"/>
         <circle cx="14" cy="0" r="3" fill="rgba(124,106,239,0.3)"/>
         <circle cx="28" cy="0" r="3" fill="rgba(74,168,216,0.2)"/>
       </g>
 
       <!-- Skills Grid -->
-      <g transform="translate(0, 56)">
+      <g transform="translate(0, 20)">
         <!-- ===== Card 1: Frontend ===== -->
         <g transform="translate(0, 0)">
-          <rect width="250" height="220" rx="22" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
+          <rect width="250" height="215" rx="22" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
           <!-- Top accent line -->
           <rect x="22" y="0" width="50" height="2.5" rx="1.25" fill="#5865F2" opacity="0.6"/>
 
@@ -385,17 +334,21 @@ function buildSvg() {
         </g>
 
         <!-- ===== Card 2: Backend ===== -->
-        <g transform="translate(270, 0)">
-          <rect width="250" height="220" rx="22" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
+        <g transform="translate(271, 0)">
+          <rect width="250" height="215" rx="22" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
+          <!-- Top accent line -->
           <rect x="22" y="0" width="50" height="2.5" rx="1.25" fill="#7c6aef" opacity="0.6"/>
 
           <g transform="translate(24, 28)">
-            <text x="0" y="0" font-size="20">⚙️</text>
+            <!-- Icon + Title -->
+            <text x="0" y="0" font-size="20">⚡</text>
             <text x="30" y="0" class="font-sans" font-size="16" font-weight="700" fill="#ffffff">Back-end</text>
             <text x="0" y="26" class="font-sans" font-size="10.5" font-weight="600" fill="#7c6aef" letter-spacing="0.5px">API &amp; ARCHITECTURE</text>
 
+            <!-- Divider -->
             <line x1="0" y1="38" x2="200" y2="38" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
 
+            <!-- Skills List -->
             <g transform="translate(0, 55)">
               <circle cx="4" cy="-4" r="2.5" fill="rgba(124,106,239,0.5)"/>
               <text x="14" y="0" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">Node.js / Express / NestJS</text>
@@ -413,17 +366,21 @@ function buildSvg() {
         </g>
 
         <!-- ===== Card 3: DevOps ===== -->
-        <g transform="translate(540, 0)">
-          <rect width="252" height="220" rx="22" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
+        <g transform="translate(542, 0)">
+          <rect width="250" height="215" rx="22" fill="url(#glass-card)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" class="border-glow"/>
+          <!-- Top accent line -->
           <rect x="22" y="0" width="50" height="2.5" rx="1.25" fill="#4aa8d8" opacity="0.6"/>
 
           <g transform="translate(24, 28)">
-            <text x="0" y="0" font-size="20">🛠️</text>
+            <!-- Icon + Title -->
+            <text x="0" y="0" font-size="20">🚀</text>
             <text x="30" y="0" class="font-sans" font-size="16" font-weight="700" fill="#ffffff">DevOps</text>
             <text x="0" y="26" class="font-sans" font-size="10.5" font-weight="600" fill="#4aa8d8" letter-spacing="0.5px">DEPLOY &amp; CLOUD</text>
 
+            <!-- Divider -->
             <line x1="0" y1="38" x2="200" y2="38" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
 
+            <!-- Skills List -->
             <g transform="translate(0, 55)">
               <circle cx="4" cy="-4" r="2.5" fill="rgba(74,168,216,0.5)"/>
               <text x="14" y="0" class="font-sans" font-size="12" fill="rgba(255,255,255,0.8)">Docker / Kubernetes</text>
@@ -445,7 +402,7 @@ function buildSvg() {
     <!-- ============================================ -->
     <!-- FOOTER -->
     <!-- ============================================ -->
-    <g transform="translate(440, 1135)">
+    <g transform="translate(440, 910)">
       <!-- Decorative Line -->
       <line x1="-350" y1="0" x2="350" y2="0" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
 
@@ -462,7 +419,7 @@ function buildSvg() {
     <!-- ============================================ -->
     <!-- OUTER FRAME BORDER -->
     <!-- ============================================ -->
-    <rect x="0" y="0" width="880" height="1200" rx="32" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" class="border-glow"/>
+    <rect x="0" y="0" width="880" height="960" rx="32" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" class="border-glow"/>
   </g>
 </svg>`;
 }
