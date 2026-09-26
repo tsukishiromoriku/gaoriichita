@@ -322,9 +322,11 @@ function buildSvg() {
 
           <!-- Header: Icon Badge + Titles -->
           <rect x="18" y="16" width="36" height="36" rx="10" fill="rgba(74,168,216,0.15)" stroke="rgba(74,168,216,0.35)" stroke-width="0.8"/>
-          <!-- Cloud Vector Icon -->
-          <path d="M29 38 c-2.5 0 -4 -1.6 -4 -3.8 c0 -1.8 1.2 -3.2 2.8 -3.6 c0.3 -2.8 2.6 -4.8 5.6 -4.8 c2.8 0 5 1.8 5.5 4.5 c1.8 0.3 3.1 1.8 3.1 3.7 c0 2.2 -1.8 4 -4 4 Z" fill="none" stroke="#4aa8d8" stroke-width="1.5" stroke-linejoin="round"/>
-          <path d="M33 33 L36 36 L41 31" fill="none" stroke="#4aa8d8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Cloud Vector Icon (Centered with straight, balanced checkmark) -->
+          <g transform="translate(2, 1.5)">
+            <path d="M29 38 c-2.5 0 -4 -1.6 -4 -3.8 c0 -1.8 1.2 -3.2 2.8 -3.6 c0.3 -2.8 2.6 -4.8 5.6 -4.8 c2.8 0 5 1.8 5.5 4.5 c1.8 0.3 3.1 1.8 3.1 3.7 c0 2.2 -1.8 4 -4 4 Z" fill="none" stroke="#4aa8d8" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M30.5 32.5 L33 35 L37 31" fill="none" stroke="#4aa8d8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
 
           <text x="64" y="32" class="font-display" font-size="18" font-weight="600" fill="#ffffff" letter-spacing="0.3px">DevOps</text>
           <text x="64" y="47" class="font-sans" font-size="9.5" font-weight="600" fill="#7dd3fc" letter-spacing="0.8px">DEPLOY &amp; CLOUD</text>
